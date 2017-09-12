@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.prefs.Preferences;
@@ -17,7 +16,7 @@ public class Main extends Application
 
 		primaryStage.setTitle("JGame");
 
-		GridPane game = new GridPane();
+		MainFrm game = new MainFrm();
 		Scene scene = new Scene(game, 800, 800);
 
 		// Get frame size and location from the users preferences
