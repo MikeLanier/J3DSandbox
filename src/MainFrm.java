@@ -1,6 +1,10 @@
+import javafx.scene.Group;
+import javafx.scene.SceneAntialiasing;
+import javafx.scene.SubScene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
 
 public class MainFrm extends GridPane {
 	public MainFrm()
@@ -17,8 +21,16 @@ public class MainFrm extends GridPane {
 		row1.setPercentHeight(100);
 		getRowConstraints().addAll(row1);
 
-		Controls controls = new Controls();
-		add(controls, 0, 0);
+		ControlsPanel controlsPanel = new ControlsPanel();
+		add(controlsPanel, 0, 0);
+
+		DisplayPanel displayPanel = new DisplayPanel();
+		SubScene subScene = new SubScene(displayPanel, 500, 800, true, SceneAntialiasing.BALANCED);
+		subScene.setFill(Color.DARKGRAY);
+		displayPanel.handleKeyboard(subScene, displayPanel.World());
+		displayPanel.handleMouse(subScene, displayPanel.World());
+		subScene.setCamera(displayPanel.Camera());
+		add(subScene, 1, 0);
 
 		setGridLinesVisible(true);
 	}
