@@ -1,11 +1,15 @@
 import javafx.scene.Group;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
+
+import java.beans.EventHandler;
 
 public class MainFrm extends GridPane {
 	public MainFrm()
@@ -29,6 +33,21 @@ public class MainFrm extends GridPane {
 		add(displayPanel, 1, 0);
 
 		setGridLinesVisible(true);
+
+		setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				System.out.println("GridPane: OnMousePresed");
+			}
+		});
+
+		setOnKeyPressed(new javafx.event.EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				System.out.println("GridPane: OnKeyPressed");
+				displayPanel.OnKeyPressed(event);
+			}
+		});
 
 	}
 }

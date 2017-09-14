@@ -110,8 +110,10 @@ public class DisplayPanel extends HBox {
 	}
 
 	public void handleMouse(SubScene scene, final Node root) {
+		System.out.println("handleMouse");
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override public void handle(MouseEvent me) {
+				System.out.println("handleMouse: onMousePressed");
 				mousePosX = me.getSceneX();
 				mousePosY = me.getSceneY();
 				mouseOldX = me.getSceneX();
@@ -152,10 +154,32 @@ public class DisplayPanel extends HBox {
 		});
 	}
 
+	public void OnKeyPressed(KeyEvent event)
+	{
+		System.out.println("handleKeyboard: onKeyPress");
+		switch (event.getCode()) {
+			case Z:
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
+				cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
+				break;
+			case X:
+				axisGroup.setVisible(!axisGroup.isVisible());
+				break;
+			case V:
+				moleculeGroup.setVisible(!moleculeGroup.isVisible());
+				break;
+		}
+	}
+
 	public void handleKeyboard(SubScene scene, final Node root) {
+		System.out.println("handleKeyboard");
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
+				System.out.println("handleKeyboard: onKeyPress");
 				switch (event.getCode()) {
 					case Z:
 						cameraXform2.t.setX(0.0);
