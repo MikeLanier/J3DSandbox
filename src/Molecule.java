@@ -4,15 +4,11 @@ import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 
-/**
- * Created by Mike on 9/14/2017.
- */
 public class Molecule extends Xform {
 	private static final double HYDROGEN_ANGLE = 104.5;
 	private static final double HYDROGEN3_ANGLE = 194.5;
 	public Molecule()
 	{
-		System.out.println("Molecule");
 		//======================================================================
 		// THIS IS THE IMPORTANT MATERIAL FOR THE TUTORIAL
 		//======================================================================
@@ -98,6 +94,5 @@ public class Molecule extends Xform {
 		hydrogen3SideXform.setRotateY(HYDROGEN3_ANGLE);
 
 		this.getChildren().add(moleculeXform);
-		System.out.println("Molecule");
 	}
 }

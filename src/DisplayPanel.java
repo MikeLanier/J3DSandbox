@@ -6,16 +6,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Box;
-import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.Sphere;
-import javafx.scene.transform.Rotate;
 
 public class DisplayPanel extends HBox {
 
 	Group root = new Group();
-	final Xform axisGroup = new Xform();
+	Xform axisGroup = null; //new Xform();
 	Xform modelGroup = null; //new Molecule();
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
@@ -27,17 +22,14 @@ public class DisplayPanel extends HBox {
 	private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
 	private static final double CAMERA_NEAR_CLIP = 0.1;
 	private static final double CAMERA_FAR_CLIP = 10000.0;
-	private static final double AXIS_LENGTH = 250.0;
-	private static final double HYDROGEN_ANGLE = 104.5;
-	private static final double HYDROGEN3_ANGLE = 194.5;
 	private static final double CONTROL_MULTIPLIER = 0.1;
 	private static final double SHIFT_MULTIPLIER = 10.0;
 	private static final double MOUSE_SPEED = 0.1;
 	private static final double ROTATION_SPEED = 2.0;
 	private static final double TRACK_SPEED = 0.3;
 
-	public PerspectiveCamera Camera() { return camera; }
-	public Xform World() { return world; }
+//	public PerspectiveCamera Camera() { return camera; }
+//	public Xform World() { return world; }
 
 	double mousePosX;
 	double mousePosY;
@@ -58,8 +50,7 @@ public class DisplayPanel extends HBox {
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.GREY);
-		handleKeyboard(subScene, world);
-		handleMouse(subScene, world);
+		handleMouse(subScene);
 
 		subScene.setCamera(camera);
 
@@ -84,35 +75,13 @@ public class DisplayPanel extends HBox {
 	}
 
 	private void buildAxes() {
-		System.out.println("buildAxes()");
-		final PhongMaterial redMaterial = new PhongMaterial();
-		redMaterial.setDiffuseColor(Color.DARKRED);
-		redMaterial.setSpecularColor(Color.RED);
-
-		final PhongMaterial greenMaterial = new PhongMaterial();
-		greenMaterial.setDiffuseColor(Color.DARKGREEN);
-		greenMaterial.setSpecularColor(Color.GREEN);
-
-		final PhongMaterial blueMaterial = new PhongMaterial();
-		blueMaterial.setDiffuseColor(Color.DARKBLUE);
-		blueMaterial.setSpecularColor(Color.BLUE);
-
-		final Box xAxis = new Box(AXIS_LENGTH, 1, 1);
-		final Box yAxis = new Box(1, AXIS_LENGTH, 1);
-		final Box zAxis = new Box(1, 1, AXIS_LENGTH);
-
-		xAxis.setMaterial(redMaterial);
-		yAxis.setMaterial(greenMaterial);
-		zAxis.setMaterial(blueMaterial);
-
-		axisGroup.getChildren().addAll(xAxis, yAxis, zAxis);
-		axisGroup.setVisible(false);
+		axisGroup = new Triad();
 		world.getChildren().addAll(axisGroup);
 	}
 
-	public void handleMouse(SubScene scene, final Node root) {
+	public void handleMouse(SubScene subScene) {
 		System.out.println("handleMouse");
-		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+		subScene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override public void handle(MouseEvent me) {
 				System.out.println("handleMouse: onMousePressed");
 				mousePosX = me.getSceneX();
@@ -121,7 +90,7 @@ public class DisplayPanel extends HBox {
 				mouseOldY = me.getSceneY();
 			}
 		});
-		scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+		subScene.setOnMouseDragged(new EventHandler<MouseEvent>() {
 			@Override public void handle(MouseEvent me) {
 				mouseOldX = mousePosX;
 				mouseOldY = mousePosY;
@@ -173,31 +142,6 @@ public class DisplayPanel extends HBox {
 				modelGroup.setVisible(!modelGroup.isVisible());
 				break;
 		}
-	}
-
-	public void handleKeyboard(SubScene scene, final Node root) {
-		System.out.println("handleKeyboard");
-		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent event) {
-				System.out.println("handleKeyboard: onKeyPress");
-				switch (event.getCode()) {
-					case Z:
-						cameraXform2.t.setX(0.0);
-						cameraXform2.t.setY(0.0);
-						camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
-						cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
-						cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
-						break;
-					case X:
-						axisGroup.setVisible(!axisGroup.isVisible());
-						break;
-					case V:
-						modelGroup.setVisible(!modelGroup.isVisible());
-						break;
-				}
-			}
-		});
 	}
 
 	private void buildMolecule() {
