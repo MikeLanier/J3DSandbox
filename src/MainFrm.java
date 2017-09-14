@@ -25,20 +25,8 @@ public class MainFrm extends GridPane {
 		ControlsPanel controlsPanel = new ControlsPanel();
 		add(controlsPanel, 0, 0);
 
-		HBox a = new HBox();
 		DisplayPanel displayPanel = new DisplayPanel();
-		SubScene subScene = new SubScene(displayPanel, 800, 800, true, SceneAntialiasing.BALANCED);
-		subScene.setFill(Color.DARKGRAY);
-		displayPanel.handleKeyboard(subScene, displayPanel.World());
-		displayPanel.handleMouse(subScene, displayPanel.World());
-		subScene.setCamera(displayPanel.Camera());
-
-		subScene.heightProperty().bind(a.heightProperty());
-		subScene.widthProperty().bind(a.widthProperty());
-		a.getChildren().add(subScene);
-
-		add(a, 1, 0);
-
+		add(displayPanel, 1, 0);
 
 		setGridLinesVisible(true);
 
