@@ -6,12 +6,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Shape;
 
 public class DisplayPanel extends HBox {
 
 	Group root = new Group();
-	Xform axisGroup = null; //new Xform();
-	Xform modelGroup = null; //new Molecule();
+	Xform triadGroup = null;
+	Xform modelGroup = null;
+	Xform sixFacesGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
 	final Xform cameraXform = new Xform();
@@ -28,9 +31,6 @@ public class DisplayPanel extends HBox {
 	private static final double ROTATION_SPEED = 2.0;
 	private static final double TRACK_SPEED = 0.3;
 
-//	public PerspectiveCamera Camera() { return camera; }
-//	public Xform World() { return world; }
-
 	double mousePosX;
 	double mousePosY;
 	double mouseOldX;
@@ -45,8 +45,9 @@ public class DisplayPanel extends HBox {
 
 		// buildScene();
 		buildCamera();
-		buildAxes();
-		buildMolecule();
+//		buildAxes();
+//		buildMolecule();
+		buildSixFaces();
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.GREY);
@@ -57,6 +58,8 @@ public class DisplayPanel extends HBox {
 		subScene.heightProperty().bind(this.heightProperty());
 		subScene.widthProperty().bind(this.widthProperty());
 		this.getChildren().add(subScene);
+
+		Polygon p = new Polygon();
 	}
 
 	private void buildCamera() {
@@ -75,8 +78,13 @@ public class DisplayPanel extends HBox {
 	}
 
 	private void buildAxes() {
-		axisGroup = new Triad();
-		world.getChildren().addAll(axisGroup);
+		triadGroup = new Triad();
+		world.getChildren().addAll(triadGroup);
+	}
+
+	private void buildSixFaces() {
+		sixFacesGroup = new SixFaces();
+		world.getChildren().addAll(sixFacesGroup);
 	}
 
 	public void handleMouse(SubScene subScene) {
@@ -136,7 +144,7 @@ public class DisplayPanel extends HBox {
 				cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
 				break;
 			case X:
-				axisGroup.setVisible(!axisGroup.isVisible());
+				triadGroup.setVisible(!triadGroup.isVisible());
 				break;
 			case V:
 				modelGroup.setVisible(!modelGroup.isVisible());
