@@ -1,7 +1,10 @@
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.*;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -9,7 +12,7 @@ import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 
-public class DisplayPanel extends Group {
+public class DisplayPanel extends HBox {
 
 	Group root = new Group();
 	final Xform axisGroup = new Xform();
@@ -44,7 +47,6 @@ public class DisplayPanel extends Group {
 
 	public DisplayPanel()
 	{
-		root = this;
 		root.getChildren().add(world);
 		root.setDepthTest(DepthTest.ENABLE);
 
@@ -53,16 +55,18 @@ public class DisplayPanel extends Group {
 		buildAxes();
 		buildMolecule();
 
-//		Scene scene = new Scene(root, 1024, 768, true);
-//		scene.setFill(Color.GREY);
-//		handleKeyboard(scene, world);
-//		handleMouse(scene, world);
-//
-//		scene.setCamera(camera);
+		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
+		subScene.setFill(Color.GREY);
+		handleKeyboard(subScene, world);
+		handleMouse(subScene, world);
+
+		subScene.setCamera(camera);
+
+		subScene.heightProperty().bind(this.heightProperty());
+		subScene.widthProperty().bind(this.widthProperty());
+		this.getChildren().add(subScene);
 	}
-	//   private void buildScene() {
-	//       root.getChildren().add(world);
-	//   }
+
 	private void buildCamera() {
 		System.out.println("buildCamera()");
 		root.getChildren().add(cameraXform);
