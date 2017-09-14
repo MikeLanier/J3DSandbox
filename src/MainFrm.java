@@ -3,6 +3,7 @@ import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 
@@ -24,14 +25,22 @@ public class MainFrm extends GridPane {
 		ControlsPanel controlsPanel = new ControlsPanel();
 		add(controlsPanel, 0, 0);
 
+		HBox a = new HBox();
 		DisplayPanel displayPanel = new DisplayPanel();
-		SubScene subScene = new SubScene(displayPanel, 500, 800, true, SceneAntialiasing.BALANCED);
+		SubScene subScene = new SubScene(displayPanel, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.DARKGRAY);
 		displayPanel.handleKeyboard(subScene, displayPanel.World());
 		displayPanel.handleMouse(subScene, displayPanel.World());
 		subScene.setCamera(displayPanel.Camera());
-		add(subScene, 1, 0);
+
+		subScene.heightProperty().bind(a.heightProperty());
+		subScene.widthProperty().bind(a.widthProperty());
+		a.getChildren().add(subScene);
+
+		add(a, 1, 0);
+
 
 		setGridLinesVisible(true);
+
 	}
 }
