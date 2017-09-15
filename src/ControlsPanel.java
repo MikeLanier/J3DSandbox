@@ -11,6 +11,7 @@ public class ControlsPanel extends VBox {
 	public CheckBox triad = new CheckBox();
 	public CheckBox sixFaces = new CheckBox();
 	public CheckBox triMesh = new CheckBox();
+	public CheckBox teapot = new CheckBox();
 
 	public ControlsPanel(DisplayPanel _displayPanel)
 	{
@@ -50,7 +51,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		triMesh.setText("TriMesh");
-		triMesh.setSelected(true);
+//		triMesh.setSelected(true);
 		getChildren().add(triMesh);
 
 		triMesh.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -58,6 +59,18 @@ public class ControlsPanel extends VBox {
 			public void handle(MouseEvent event) {
 //				System.out.println("TriMesh: mouse clicked: " + triMesh.isSelected());
 				displayPanel.ShowTriMesh(triMesh.isSelected());
+			}
+		});
+
+		teapot.setText("Teapot");
+		teapot.setSelected(true);
+		getChildren().add(teapot);
+
+		teapot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+//				System.out.println("Teapot: mouse clicked: " + teapot.isSelected());
+				displayPanel.ShowTeapot(teapot.isSelected());
 			}
 		});
 	}
