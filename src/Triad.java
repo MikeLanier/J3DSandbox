@@ -3,10 +3,11 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 
 public class Triad extends Xform {
-	private static final double AXIS_LENGTH = 250.0;
 	public Triad()
 	{
 		System.out.println("buildAxes()");
+		double AXIS_LENGTH = 250.0;
+
 		final PhongMaterial redMaterial = new PhongMaterial();
 		redMaterial.setDiffuseColor(Color.DARKRED);
 		redMaterial.setSpecularColor(Color.RED);
