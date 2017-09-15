@@ -10,6 +10,7 @@ public class ControlsPanel extends VBox {
 	public CheckBox molecule = new CheckBox();
 	public CheckBox triad = new CheckBox();
 	public CheckBox sixFaces = new CheckBox();
+	public CheckBox triMesh = new CheckBox();
 
 	public ControlsPanel(DisplayPanel _displayPanel)
 	{
@@ -38,7 +39,6 @@ public class ControlsPanel extends VBox {
 		});
 		
 		sixFaces.setText("SixFaces");
-		sixFaces.setSelected(true);
 		getChildren().add(sixFaces);
 
 		sixFaces.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -46,6 +46,18 @@ public class ControlsPanel extends VBox {
 			public void handle(MouseEvent event) {
 //				System.out.println("SixFaces: mouse clicked: " + sixFaces.isSelected());
 				displayPanel.ShowSixFaces(sixFaces.isSelected());
+			}
+		});
+
+		triMesh.setText("TriMesh");
+		triMesh.setSelected(true);
+		getChildren().add(triMesh);
+
+		triMesh.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+//				System.out.println("TriMesh: mouse clicked: " + triMesh.isSelected());
+				displayPanel.ShowTriMesh(triMesh.isSelected());
 			}
 		});
 	}

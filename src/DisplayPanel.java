@@ -15,6 +15,7 @@ public class DisplayPanel extends HBox {
 	Xform triadGroup = null;
 	Xform moleculeGroup = null;
 	Xform sixFacesGroup = null;
+	Xform triMeshGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
 	final Xform cameraXform = new Xform();
@@ -48,6 +49,7 @@ public class DisplayPanel extends HBox {
 		buildAxes();
 		buildMolecule();
 		buildSixFaces();
+		buildTriMesh();
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.GREY);
@@ -93,6 +95,12 @@ public class DisplayPanel extends HBox {
 		moleculeGroup = new Molecule();
 		moleculeGroup.setVisible(false);
 		world.getChildren().addAll(moleculeGroup);
+	}
+
+	private void buildTriMesh() {
+		triMeshGroup = new TriMesh();
+		triMeshGroup.setVisible(false);
+		world.getChildren().addAll(triMeshGroup);
 	}
 
 	public void handleMouse(SubScene subScene) {
@@ -153,6 +161,11 @@ public class DisplayPanel extends HBox {
 	public void ShowMolecule(boolean _show)
 	{
 		moleculeGroup.setVisible(_show);
+	}
+
+	public void ShowTriMesh(boolean _show)
+	{
+		triMeshGroup.setVisible(_show);
 	}
 
 	public void OnKeyPressed(KeyEvent event)
