@@ -13,7 +13,7 @@ public class DisplayPanel extends HBox {
 
 	Group root = new Group();
 	Xform triadGroup = null;
-	Xform modelGroup = null;
+	Xform moleculeGroup = null;
 	Xform sixFacesGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
@@ -45,8 +45,8 @@ public class DisplayPanel extends HBox {
 
 		// buildScene();
 		buildCamera();
-//		buildAxes();
-//		buildMolecule();
+		buildAxes();
+		buildMolecule();
 		buildSixFaces();
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
@@ -79,12 +79,20 @@ public class DisplayPanel extends HBox {
 
 	private void buildAxes() {
 		triadGroup = new Triad();
+		triadGroup.setVisible(false);
 		world.getChildren().addAll(triadGroup);
 	}
 
 	private void buildSixFaces() {
 		sixFacesGroup = new SixFaces();
+		sixFacesGroup.setVisible(false);
 		world.getChildren().addAll(sixFacesGroup);
+	}
+
+	private void buildMolecule() {
+		moleculeGroup = new Molecule();
+		moleculeGroup.setVisible(false);
+		world.getChildren().addAll(moleculeGroup);
 	}
 
 	public void handleMouse(SubScene subScene) {
@@ -132,6 +140,21 @@ public class DisplayPanel extends HBox {
 		});
 	}
 
+	public void ShowTriad(boolean _show)
+	{
+		triadGroup.setVisible(_show);
+	}
+
+	public void ShowSixFaces(boolean _show)
+	{
+		sixFacesGroup.setVisible(_show);
+	}
+
+	public void ShowMolecule(boolean _show)
+	{
+		moleculeGroup.setVisible(_show);
+	}
+
 	public void OnKeyPressed(KeyEvent event)
 	{
 		System.out.println("DisplayPanel: OnKeyPressed");
@@ -143,17 +166,15 @@ public class DisplayPanel extends HBox {
 				cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
 				cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
 				break;
-			case X:
-				triadGroup.setVisible(!triadGroup.isVisible());
-				break;
-			case V:
-				modelGroup.setVisible(!modelGroup.isVisible());
-				break;
+//			case X:
+//				triadGroup.setVisible(!triadGroup.isVisible());
+//				break;
+//			case C:
+//				sixFacesGroup.setVisible(!sixFacesGroup.isVisible());
+//				break;
+//			case V:
+//				moleculeGroup.setVisible(!moleculeGroup.isVisible());
+//				break;
 		}
-	}
-
-	private void buildMolecule() {
-		modelGroup = new Molecule();
-		world.getChildren().addAll(modelGroup);
 	}
 }

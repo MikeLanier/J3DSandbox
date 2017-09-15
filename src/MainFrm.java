@@ -26,11 +26,15 @@ public class MainFrm extends GridPane {
 		row1.setPercentHeight(100);
 		getRowConstraints().addAll(row1);
 
-		ControlsPanel controlsPanel = new ControlsPanel();
-		add(controlsPanel, 0, 0);
-
 		DisplayPanel displayPanel = new DisplayPanel();
+		ControlsPanel controlsPanel = new ControlsPanel(displayPanel);
+
+		add(controlsPanel, 0, 0);
 		add(displayPanel, 1, 0);
+
+		displayPanel.ShowMolecule(controlsPanel.molecule.isSelected());
+		displayPanel.ShowTriad(controlsPanel.triad.isSelected());
+		displayPanel.ShowSixFaces(controlsPanel.sixFaces.isSelected());
 
 		setGridLinesVisible(true);
 
