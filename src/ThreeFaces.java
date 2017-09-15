@@ -1,14 +1,13 @@
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.RectangleBuilder;
 import javafx.scene.shape.TriangleMesh;
 
 /**
  * Created by Mike on 9/15/2017.
  */
-public class Teapot extends Xform {
-	public Teapot() {
+public class ThreeFaces extends Xform {
+	public ThreeFaces() {
 		TriangleMesh m = new TriangleMesh();
 
 		// POINTS
@@ -50,7 +49,7 @@ public class Teapot extends Xform {
 		mv.setMesh(m);
 
 		PhongMaterial mat = new PhongMaterial();
-		mat.setDiffuseColor(Color.GRAY);
+		mat.setDiffuseColor(Color.GREEN);
 		mat.setSpecularColor(Color.WHITE);
 		mv.setMaterial(mat);
 
