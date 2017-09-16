@@ -64,7 +64,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		teapot.setText("Teapot");
-//		teapot.setSelected(true);
+		teapot.setSelected(true);
 		getChildren().add(teapot);
 
 		teapot.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -76,7 +76,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		threeFaces.setText("ThreeFaces");
-		threeFaces.setSelected(true);
+//		threeFaces.setSelected(true);
 		getChildren().add(threeFaces);
 
 		threeFaces.setOnMouseClicked(new EventHandler<MouseEvent>() {
