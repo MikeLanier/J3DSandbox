@@ -38,6 +38,7 @@ public class MainFrm extends GridPane {
 		displayPanel.ShowTriMesh(controlsPanel.triMesh.isSelected());
 		displayPanel.ShowTeapot(controlsPanel.teapot.isSelected());
 		displayPanel.ShowThreeFaces(controlsPanel.threeFaces.isSelected());
+		displayPanel.ShowHelix(controlsPanel.helix.isSelected());
 
 		setGridLinesVisible(true);
 

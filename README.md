@@ -32,3 +32,9 @@ be added. Something I didn't want to dive into at the time since I had
 basic display working and didn't want to break it.  The more I learn,
 the more I want to complicate things. Eventually, I'll come back to 
 this. (09/15/2017)
+
+A circular helix of radius a and slope b/a (or pitch 2πb) is described by the following parametrisation:
+
+    x (t) = a cos(t)
+    y (t) = a sin(t)
+    z (t) = bt. 
