@@ -23,6 +23,7 @@ public class DisplayPanel extends HBox {
 	Xform teapotGroup = null;
 	Xform threeFacesGroup = null;
 	Xform helixGroup = null;
+	Xform mazeGridGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
 	final Xform cameraXform = new Xform();
@@ -60,6 +61,7 @@ public class DisplayPanel extends HBox {
 		buildTeapot();
 		buildThreeFaces();
 		buildHelix();
+		buildMazeGrid();
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.GREY);
@@ -129,6 +131,12 @@ public class DisplayPanel extends HBox {
 		helixGroup = new Helix();
 		helixGroup.setVisible(false);
 		world.getChildren().addAll(helixGroup);
+	}
+
+	private void buildMazeGrid() {
+		mazeGridGroup = new MazeGrid();
+		mazeGridGroup.setVisible(false);
+		world.getChildren().addAll(mazeGridGroup);
 	}
 
 	public void handleMouse(SubScene subScene) {
@@ -209,6 +217,11 @@ public class DisplayPanel extends HBox {
 	public void ShowHelix(boolean _show)
 	{
 		helixGroup.setVisible(_show);
+	}
+
+	public void ShowMazeGrid(boolean _show)
+	{
+		mazeGridGroup.setVisible(_show);
 	}
 
 	private double	dXRotationDelta = 0.0;

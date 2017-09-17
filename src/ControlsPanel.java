@@ -19,6 +19,7 @@ public class ControlsPanel extends VBox {
 	public CheckBox teapot = new CheckBox();
 	public CheckBox threeFaces = new CheckBox();
 	public CheckBox helix = new CheckBox();
+	public CheckBox mazeGrid = new CheckBox();
 
 	public Boolean rotationStarted = false;
 
@@ -51,7 +52,7 @@ public class ControlsPanel extends VBox {
 		});
 		
 		sixFaces.setText("SixFaces");
-		sixFaces.setSelected(true);
+//		sixFaces.setSelected(true);
 		getChildren().add(sixFaces);
 
 		sixFaces.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -107,6 +108,18 @@ public class ControlsPanel extends VBox {
 			public void handle(MouseEvent event) {
 //				System.out.println("Helix: mouse clicked: " + helix.isSelected());
 				displayPanel.ShowHelix(helix.isSelected());
+			}
+		});
+
+		mazeGrid.setText("MazeGrid");
+		mazeGrid.setSelected(true);
+		getChildren().add(mazeGrid);
+
+		mazeGrid.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+//				System.out.println("MazeGrid: mouse clicked: " + mazeGrid.isSelected());
+				displayPanel.ShowMazeGrid(mazeGrid.isSelected());
 			}
 		});
 
