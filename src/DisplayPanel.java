@@ -1,3 +1,6 @@
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.*;
@@ -8,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 
 public class DisplayPanel extends HBox {
 
@@ -205,6 +209,48 @@ public class DisplayPanel extends HBox {
 	public void ShowHelix(boolean _show)
 	{
 		helixGroup.setVisible(_show);
+	}
+
+	private double	dXRotationDelta = 0.0;
+	private double	dYRotationDelta = 0.0;
+	private double	dZRotationDelta = 1.0;
+
+	public void SetXRotationDelta(double _delta)
+	{
+		dXRotationDelta = _delta;
+	}
+
+	public void SetYRotationDelta(double _delta)
+	{
+		dYRotationDelta = _delta;
+	}
+	public void SetZRotationDelta(double _delta)
+	{
+		dZRotationDelta = _delta;
+	}
+
+	private void doSomething()
+	{
+		cameraXform.rx.setAngle(cameraXform.rx.getAngle() + dXRotationDelta);
+		cameraXform.ry.setAngle(cameraXform.ry.getAngle() + dYRotationDelta);
+		cameraXform.rz.setAngle(cameraXform.rz.getAngle() + dZRotationDelta);
+	}
+
+	private Timeline timeline = new Timeline(new KeyFrame(
+			Duration.millis(25),
+			ae -> doSomething()));
+
+	public void StartRotation(boolean _startRotation)
+	{
+		System.out.println("RotationStarted: " + _startRotation);
+
+		if(_startRotation) {
+			timeline.setCycleCount(Animation.INDEFINITE);
+			timeline.play();
+		}
+		else {
+			timeline.stop();
+		}
 	}
 
 	public void OnKeyPressed(KeyEvent event)
