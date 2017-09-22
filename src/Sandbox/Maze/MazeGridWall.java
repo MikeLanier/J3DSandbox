@@ -10,6 +10,7 @@ public class MazeGridWall extends Xform {
 	private int yOrigin = 0;
 	private int zOrigin = 0;
 	private boolean horizonal = false;
+	private Box box = null;
 
 	public MazeGridWall(int _xOrigin, int _yOrigin, int _zOrigin, boolean _horizonal, int color)
 	{
@@ -38,19 +39,17 @@ public class MazeGridWall extends Xform {
 		whiteMaterial.setDiffuseColor(Color.LIGHTGRAY);
 		whiteMaterial.setSpecularColor(Color.DARKGRAY);
 
-		Box box = null;
-
 		if(horizonal)
 		{
-			box = new Box(MazeGlobal.mazeCellSize, MazeGlobal.mazeCellSize, .5);
+			box = new Box(10, 10, .5);
 		}
 		else
 		{
-			box = new Box(.5, MazeGlobal.mazeCellSize, MazeGlobal.mazeCellSize);
+			box = new Box(.5, 10, 10);
 		}
 
-		setTx(xOrigin + (horizonal ? 5 : 0));
-		setTz(zOrigin + (horizonal ? 0 : 5));
+		setTx(xOrigin*10 + (horizonal ? 5 : 0));
+		setTz(zOrigin*10 + (horizonal ? 0 : 5));
 
 		if(color == 0)	box.setMaterial(whiteMaterial);
 		if(color == 1)	box.setMaterial(blueMaterial);
@@ -59,6 +58,18 @@ public class MazeGridWall extends Xform {
 		if(color == 4)	box.setMaterial(yellowMaterial);
 
 		getChildren().add(box);
+	}
+
+	private boolean open = false;
+	public void Open(boolean _open)
+	{
+		open = _open;
+		box.setVisible(!_open);
+	}
+
+	public boolean Open()
+	{
+		return open;
 	}
 
 	public Integer ID()

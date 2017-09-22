@@ -25,7 +25,7 @@ public class DisplayPanel extends HBox {
 	Xform teapotGroup = null;
 	Xform threeFacesGroup = null;
 	Xform helixGroup = null;
-	Xform mazeGridGroup = null;
+	MazeGrid mazeGridGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
 	final Xform cameraXform = new Xform();

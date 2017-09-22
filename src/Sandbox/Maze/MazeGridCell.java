@@ -1,6 +1,9 @@
 package Sandbox.Maze;
 
 import Sandbox.Xform;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Box;
 
 public class MazeGridCell extends Xform {
 	private int	xOrigin = 0;
@@ -35,7 +38,33 @@ public class MazeGridCell extends Xform {
 		eCellTypeExit
 	}
 
+	final PhongMaterial greenMaterial = new PhongMaterial();
+	final PhongMaterial redMaterial = new PhongMaterial();
+	final PhongMaterial blueMaterial = new PhongMaterial();
+
+	private Box box = null;
+
 	private CellType type = CellType.eNormal;
+	public void SetType( CellType _type )
+	{
+		type = _type;
+
+		if(type == CellType.eCellTypeStart) {
+			setVisible(true);
+			box.setMaterial(redMaterial);
+		}
+		else if(type == CellType.eCellTypeEntrance) {
+			setVisible(true);
+			box.setMaterial(greenMaterial);
+		}
+		else if(type == CellType.eCellTypeExit) {
+			setVisible(true);
+			box.setMaterial(blueMaterial);
+		}
+		else {
+			setVisible(false);
+		}
+	}
 
 	public MazeGridCell(int _xOrigin, int _yOrigin, int _zOrigin, MazeGridWall west, MazeGridWall north, MazeGridWall east, MazeGridWall south)
 	{
@@ -47,6 +76,24 @@ public class MazeGridCell extends Xform {
 		mazeWalls[1] = north;
 		mazeWalls[2] = east;
 		mazeWalls[3] = south;
+
+		greenMaterial.setDiffuseColor(Color.DARKGREEN);
+		greenMaterial.setSpecularColor(Color.GREEN);
+
+		redMaterial.setDiffuseColor(Color.DARKRED);
+		redMaterial.setSpecularColor(Color.RED);
+
+		blueMaterial.setDiffuseColor(Color.DARKBLUE);
+		blueMaterial.setSpecularColor(Color.LIGHTBLUE);
+
+		box = new Box(10, .5, 10);
+
+		setTx(xOrigin*10 + 5);
+		setTz(zOrigin*10 + 5);
+
+		box.setMaterial(greenMaterial);
+		setVisible(false);
+		getChildren().add(box);
 	}
 
 	public Integer ID()

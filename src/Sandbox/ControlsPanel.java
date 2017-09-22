@@ -202,5 +202,16 @@ public class ControlsPanel extends VBox {
 				displayPanel.StartRotation(rotationStarted);
 			}
 		});
+
+		Button mazeStep = new Button();
+		mazeStep.setText("Maze Step");
+		getChildren().add(mazeStep);
+
+		mazeStep.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				displayPanel.mazeGridGroup.createMazeStep();
+			}
+		});
 	}
 }

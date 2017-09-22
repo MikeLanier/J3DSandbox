@@ -1,16 +1,21 @@
 package Sandbox.Maze;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class MazeGlobal {
 	public static int	mazeSizeX = 10;
 	public static int	mazeSizeY = 10;
-	public static int	mazeCellSize = 10;
 
-	public MazeGlobal()
-	{
+	public static Map<Integer, MazeGridCell> cells = new HashMap<Integer, MazeGridCell>();
+	public static Map<Integer, MazeGridWall> walls = new HashMap<Integer, MazeGridWall>();
 
-	}
+	public static MazeGridCell currentMazeCell = null;
+	public static MazeGridCell entranceMazeCell = null;
+	public static MazeGridCell exitMazeCell = null;
+
+	public MazeGlobal() {}
 
 	public static Random rand = new Random(System.currentTimeMillis());
 
