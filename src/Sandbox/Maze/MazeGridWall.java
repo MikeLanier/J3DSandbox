@@ -6,8 +6,18 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 
 public class MazeGridWall extends Xform {
-	public MazeGridWall(int xOrigin, int yOrigin, int zOrigin, boolean horizonal, int color)
+	private int xOrigin = 0;
+	private int yOrigin = 0;
+	private int zOrigin = 0;
+	private boolean horizonal = false;
+
+	public MazeGridWall(int _xOrigin, int _yOrigin, int _zOrigin, boolean _horizonal, int color)
 	{
+		xOrigin = _xOrigin;
+		yOrigin = _yOrigin;
+		zOrigin = _zOrigin;
+		horizonal = _horizonal;
+
 		final PhongMaterial blueMaterial = new PhongMaterial();
 		blueMaterial.setDiffuseColor(Color.DARKBLUE);
 		blueMaterial.setSpecularColor(Color.BLUE);
@@ -32,11 +42,11 @@ public class MazeGridWall extends Xform {
 
 		if(horizonal)
 		{
-			box = new Box(10, 10, .5);
+			box = new Box(MazeGlobal.mazeCellSize, MazeGlobal.mazeCellSize, .5);
 		}
 		else
 		{
-			box = new Box(.5, 10, 10);
+			box = new Box(.5, MazeGlobal.mazeCellSize, MazeGlobal.mazeCellSize);
 		}
 
 		setTx(xOrigin + (horizonal ? 5 : 0));
@@ -49,5 +59,10 @@ public class MazeGridWall extends Xform {
 		if(color == 4)	box.setMaterial(yellowMaterial);
 
 		getChildren().add(box);
+	}
+
+	public Integer ID()
+	{
+		return MazeGlobal.ID(xOrigin, yOrigin, zOrigin, horizonal);
 	}
 }

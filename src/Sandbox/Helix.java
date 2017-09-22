@@ -36,7 +36,7 @@ public class Helix extends Xform {
 			m.getPoints().addAll(y);
 			m.getPoints().addAll(z);
 
-			System.out.println(x + ", " + y + ", " + z);
+//			System.out.println(x + ", " + y + ", " + z);
 
 			x = (float) (radiusInner * Math.cos(a));
 			y = (float) (radiusInner * Math.sin(a));
@@ -46,7 +46,7 @@ public class Helix extends Xform {
 			m.getPoints().addAll(y);
 			m.getPoints().addAll(z);
 
-			System.out.println(x + ", " + y + ", " + z);
+//			System.out.println(x + ", " + y + ", " + z);
 		}
 
 		int n = m.getPoints().size() / 6;

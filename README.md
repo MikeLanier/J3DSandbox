@@ -1,9 +1,8 @@
 # J3DSandbox
 A Java App to learn, practice and test OpenGL and (if possible) DirectX programming.
 
-### 09/17/2017
+### 09/22/2017
 * create controls for defining options (09/14/2017)
-  * controls for starting a perpetual rotation (09/17/2017)
   * controls for defining multiple lights (09/14/2017)
   * controls for selecting a face to view, Top, Front, etc...  (09/14/2017)
   * controls for pan, zoom and fit   (09/14/2017)
@@ -14,6 +13,10 @@ A Java App to learn, practice and test OpenGL and (if possible) DirectX programm
 * recall the teapot model and implement (09/14/2017)
 * Add text to the SixFace model to label the faces, front 
 back, left etc. (09/15/2017)
+* BUG: grid create does not work well for cell size other than 10
+### 09/17/2017
+* ~~create controls for defining options (09/14/2017)~~
+  * ~~controls for starting a perpetual rotation (09/17/2017)~~
 ### 09/15/2017
 * ~~create controls for defining options (09/14/2017)~~
   * ~~Checklist or combo box to define which model to display (09/15/2017)~~
