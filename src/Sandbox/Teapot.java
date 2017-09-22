@@ -1,4 +1,5 @@
-import javafx.geometry.Point3D;
+package Sandbox;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.*;

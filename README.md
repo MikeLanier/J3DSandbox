@@ -21,16 +21,16 @@ back, left etc. (09/15/2017)
 * ~~modularize the model display so that I can pick and choose what is
 displayed (09/12/2017)~~
 * ~~BUG: keyboard not being handled: Added a keypress event handler
-to MainFrame and called a method in DisplayPanel to handle the
+to MainFrame and called a method in Sandbox.DisplayPanel to handle the
 event (09/14/2017)~~
 ### 09/12/2017
 * ~~create panel for 3D display~~
 
 #Notes
 Regarding the addition of non-rotating text. I was thinking of adding
-non-rotating text to the SixFaces model, but, the way I have things 
+non-rotating text to the Sandbox.SixFaces model, but, the way I have things 
 wired up in the app, everything I add to the display will rotate. 
-Maybe I need a layer above the root Xform where non-rotating stuff can
+Maybe I need a layer above the root Sandbox.Xform where non-rotating stuff can
 be added. Something I didn't want to dive into at the time since I had
 basic display working and didn't want to break it.  The more I learn,
 the more I want to complicate things. Eventually, I'll come back to 

@@ -1,10 +1,9 @@
+package Sandbox;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Helix extends Xform {
 	public Helix() {

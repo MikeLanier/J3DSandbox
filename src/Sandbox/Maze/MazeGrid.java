@@ -1,3 +1,7 @@
+package Sandbox.Maze;
+
+import Sandbox.Xform;
+
 public class MazeGrid extends Xform {
 	public MazeGrid()
 	{

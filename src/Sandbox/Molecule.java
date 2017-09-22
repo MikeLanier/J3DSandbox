@@ -1,3 +1,5 @@
+package Sandbox;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
@@ -25,7 +27,7 @@ public class Molecule extends Xform {
 		greyMaterial.setDiffuseColor(Color.DARKGREY);
 		greyMaterial.setSpecularColor(Color.GREY);
 
-		// Molecule Hierarchy
+		// Sandbox.Molecule Hierarchy
 		// [*] moleculeXform
 		//     [*] oxygenXform
 		//         [*] oxygenSphere

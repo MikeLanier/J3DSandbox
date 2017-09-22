@@ -1,3 +1,6 @@
+package Sandbox.Maze;
+
+import Sandbox.Xform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;

@@ -1,4 +1,4 @@
-/*
+package Sandbox;/*
  * Copyright (c) 2013, 2014 Oracle and/or its affiliates.
  * All rights reserved. Use is subject to license terms.
  *
@@ -179,7 +179,7 @@ public class Xform extends Group {
     }
 
     @Override public String toString() {
-        return "Xform[t = (" +
+        return "Sandbox.Xform[t = (" +
                            t.getX() + ", " +
                            t.getY() + ", " +
                            t.getZ() + ")  " +

@@ -1,14 +1,12 @@
+package Sandbox;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
-
-import static javafx.scene.text.TextAlignment.CENTER;
 
 public class ControlsPanel extends VBox {
 	private DisplayPanel displayPanel = null;
@@ -29,96 +27,96 @@ public class ControlsPanel extends VBox {
 
 		this.setPadding(new Insets(10, 10, 10, 10));
 
-		molecule.setText("Molecule");
+		molecule.setText("Sandbox.Molecule");
 		getChildren().add(molecule);
 		
 		molecule.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("Molecule: mouse clicked: " + molecule.isSelected());
+//				System.out.println("Sandbox.Molecule: mouse clicked: " + molecule.isSelected());
 				displayPanel.ShowMolecule(molecule.isSelected());
 			}
 		});
 
-		triad.setText("Triad");
+		triad.setText("Sandbox.Triad");
 		getChildren().add(triad);
 
 		triad.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("Triad: mouse clicked: " + triad.isSelected());
+//				System.out.println("Sandbox.Triad: mouse clicked: " + triad.isSelected());
 				displayPanel.ShowTriad(triad.isSelected());
 			}
 		});
 		
-		sixFaces.setText("SixFaces");
+		sixFaces.setText("Sandbox.SixFaces");
 //		sixFaces.setSelected(true);
 		getChildren().add(sixFaces);
 
 		sixFaces.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("SixFaces: mouse clicked: " + sixFaces.isSelected());
+//				System.out.println("Sandbox.SixFaces: mouse clicked: " + sixFaces.isSelected());
 				displayPanel.ShowSixFaces(sixFaces.isSelected());
 			}
 		});
 
-		triMesh.setText("TriMesh");
+		triMesh.setText("Sandbox.TriMesh");
 //		triMesh.setSelected(true);
 		getChildren().add(triMesh);
 
 		triMesh.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("TriMesh: mouse clicked: " + triMesh.isSelected());
+//				System.out.println("Sandbox.TriMesh: mouse clicked: " + triMesh.isSelected());
 				displayPanel.ShowTriMesh(triMesh.isSelected());
 			}
 		});
 
-		teapot.setText("Teapot");
+		teapot.setText("Sandbox.Teapot");
 //		teapot.setSelected(true);
 		getChildren().add(teapot);
 
 		teapot.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("Teapot: mouse clicked: " + teapot.isSelected());
+//				System.out.println("Sandbox.Teapot: mouse clicked: " + teapot.isSelected());
 				displayPanel.ShowTeapot(teapot.isSelected());
 			}
 		});
 
-		threeFaces.setText("ThreeFaces");
+		threeFaces.setText("Sandbox.ThreeFaces");
 //		threeFaces.setSelected(true);
 		getChildren().add(threeFaces);
 
 		threeFaces.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("ThreeFaces: mouse clicked: " + threeFaces.isSelected());
+//				System.out.println("Sandbox.ThreeFaces: mouse clicked: " + threeFaces.isSelected());
 				displayPanel.ShowThreeFaces(threeFaces.isSelected());
 			}
 		});
 
-		helix.setText("Helix");
+		helix.setText("Sandbox.Helix");
 //		helix.setSelected(true);
 		getChildren().add(helix);
 
 		helix.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("Helix: mouse clicked: " + helix.isSelected());
+//				System.out.println("Sandbox.Helix: mouse clicked: " + helix.isSelected());
 				displayPanel.ShowHelix(helix.isSelected());
 			}
 		});
 
-		mazeGrid.setText("MazeGrid");
+		mazeGrid.setText("Sandbox.Maze.MazeGrid");
 		mazeGrid.setSelected(true);
 		getChildren().add(mazeGrid);
 
 		mazeGrid.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-//				System.out.println("MazeGrid: mouse clicked: " + mazeGrid.isSelected());
+//				System.out.println("Sandbox.Maze.MazeGrid: mouse clicked: " + mazeGrid.isSelected());
 				displayPanel.ShowMazeGrid(mazeGrid.isSelected());
 			}
 		});

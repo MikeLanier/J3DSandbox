@@ -1,3 +1,6 @@
+package Sandbox;
+
+import Sandbox.Maze.MazeGrid;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -10,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 public class DisplayPanel extends HBox {
@@ -268,7 +270,7 @@ public class DisplayPanel extends HBox {
 
 	public void OnKeyPressed(KeyEvent event)
 	{
-		System.out.println("DisplayPanel: OnKeyPressed");
+		System.out.println("Sandbox.DisplayPanel: OnKeyPressed");
 		switch (event.getCode()) {
 			case Z:
 				cameraXform2.t.setX(0.0);
@@ -276,6 +278,15 @@ public class DisplayPanel extends HBox {
 				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
 				cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
 				cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
+				break;
+			case T:
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(0);
+				cameraXform.rx.setAngle(90);
+				cameraXform.rz.setAngle(0);
 				break;
 //			case X:
 //				triadGroup.setVisible(!triadGroup.isVisible());

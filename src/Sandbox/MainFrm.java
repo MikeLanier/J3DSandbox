@@ -1,20 +1,15 @@
-import javafx.scene.Group;
-import javafx.scene.SceneAntialiasing;
-import javafx.scene.SubScene;
+package Sandbox;
+
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
-
-import java.beans.EventHandler;
 
 public class MainFrm extends GridPane {
 	public MainFrm()
 	{
-		System.out.println("MainFrm");
+		System.out.println("Sandbox.MainFrm");
 
 		ColumnConstraints col1 = new ColumnConstraints();
 		ColumnConstraints col2 = new ColumnConstraints();

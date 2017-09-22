@@ -1,10 +1,9 @@
-import javafx.scene.image.Image;
+package Sandbox;
+
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.CullFace;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
-import javafx.scene.transform.Rotate;
 
 public class TriMesh extends Xform {
 
