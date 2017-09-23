@@ -35,21 +35,14 @@ public class MainFrm extends GridPane {
 		displayPanel.ShowThreeFaces(controlsPanel.threeFaces.isSelected());
 		displayPanel.ShowHelix(controlsPanel.helix.isSelected());
 		displayPanel.ShowMazeGrid(controlsPanel.mazeGrid.isSelected());
+		displayPanel.ShowArrows(controlsPanel.arrows.isSelected());
 
 		setGridLinesVisible(true);
-
-		setOnMousePressed(new javafx.event.EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				System.out.println("GridPane: OnMousePresed");
-			}
-		});
-
 
 		setOnKeyPressed(new javafx.event.EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				System.out.println("GridPane: OnKeyPressed");
+//				System.out.println("GridPane: OnKeyPressed");
 				displayPanel.OnKeyPressed(event);
 			}
 		});
