@@ -26,14 +26,15 @@ public class DisplayPanel extends HBox {
 	Xform threeFacesGroup = null;
 	Xform helixGroup = null;
 	MazeGrid mazeGridGroup = null;
+	Xform arrowsGroup = null;
 	final Xform world = new Xform();
 	final PerspectiveCamera camera = new PerspectiveCamera(true);
 	final Xform cameraXform = new Xform();
 	final Xform cameraXform2 = new Xform();
 	final Xform cameraXform3 = new Xform();
-	private static final double CAMERA_INITIAL_DISTANCE = -450;
-	private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
-	private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
+	private static final double CAMERA_INITIAL_DISTANCE = -450; //-450;
+	private static final double CAMERA_INITIAL_X_ANGLE = 0; //70.0;
+	private static final double CAMERA_INITIAL_Y_ANGLE = 0; //320.0;
 	private static final double CAMERA_NEAR_CLIP = 0.1;
 	private static final double CAMERA_FAR_CLIP = 10000.0;
 	private static final double CONTROL_MULTIPLIER = 0.1;
@@ -64,6 +65,7 @@ public class DisplayPanel extends HBox {
 		buildThreeFaces();
 		buildHelix();
 		buildMazeGrid();
+		buildArrows();
 
 		SubScene subScene = new SubScene(root, 800, 800, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.GREY);
@@ -139,6 +141,12 @@ public class DisplayPanel extends HBox {
 		mazeGridGroup = new MazeGrid();
 		mazeGridGroup.setVisible(false);
 		world.getChildren().addAll(mazeGridGroup);
+	}
+
+	private void buildArrows() {
+		arrowsGroup = new Arrows();
+		arrowsGroup.setVisible(false);
+		world.getChildren().addAll(arrowsGroup);
 	}
 
 	public void handleMouse(SubScene subScene) {
@@ -226,6 +234,11 @@ public class DisplayPanel extends HBox {
 		mazeGridGroup.setVisible(_show);
 	}
 
+	public void ShowArrows(boolean _show)
+	{
+		arrowsGroup.setVisible(_show);
+	}
+
 	private double	dXRotationDelta = 0.0;
 	private double	dYRotationDelta = 0.0;
 	private double	dZRotationDelta = 1.0;
@@ -268,18 +281,22 @@ public class DisplayPanel extends HBox {
 		}
 	}
 
+	private double scale = 1;
 	public void OnKeyPressed(KeyEvent event)
 	{
-		System.out.println("Sandbox.DisplayPanel: OnKeyPressed");
-		switch (event.getCode()) {
-			case Z:
+//		System.out.println("Sandbox.DisplayPanel: OnKeyPressed: " + event.getText());
+
+		switch (event.getText()) {
+			case "Z":
+			case "z":
 				cameraXform2.t.setX(0.0);
 				cameraXform2.t.setY(0.0);
 				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
 				cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
 				cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
 				break;
-			case T:
+			case "T":
+			case "t":
 				System.out.println("T is pressed");
 				cameraXform2.t.setX(0.0);
 				cameraXform2.t.setY(0.0);
@@ -288,7 +305,8 @@ public class DisplayPanel extends HBox {
 				cameraXform.rx.setAngle(90);
 				cameraXform.rz.setAngle(0);
 				break;
-			case B:
+			case "B":
+			case "b":
 				System.out.println("T is pressed");
 				cameraXform2.t.setX(0.0);
 				cameraXform2.t.setY(0.0);
@@ -296,6 +314,18 @@ public class DisplayPanel extends HBox {
 				cameraXform.ry.setAngle(0);
 				cameraXform.rx.setAngle(90);
 				cameraXform.rz.setAngle(180);
+				break;
+			case "-": 	// zoom out
+				double d = camera.getTranslateZ();
+//				System.out.println(d);
+				camera.setTranslateZ(d-10);
+				break;
+			case "=":	// zoom in
+				if(event.isShiftDown()) {
+					d = camera.getTranslateZ();
+//					System.out.println(d);
+					camera.setTranslateZ(d+10);
+				}
 				break;
 //			case X:
 //				triadGroup.setVisible(!triadGroup.isVisible());

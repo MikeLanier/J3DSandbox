@@ -4,9 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
+//import java.awt.*;
 
 public class ControlsPanel extends VBox {
 	private DisplayPanel displayPanel = null;
@@ -18,6 +23,7 @@ public class ControlsPanel extends VBox {
 	public CheckBox threeFaces = new CheckBox();
 	public CheckBox helix = new CheckBox();
 	public CheckBox mazeGrid = new CheckBox();
+	public CheckBox arrows = new CheckBox();
 
 	public Boolean rotationStarted = false;
 
@@ -123,7 +129,7 @@ public class ControlsPanel extends VBox {
 //		mazeBox.setPadding(new Insets(10, 10, 10, 10));
 
 		mazeGrid.setText("Maze");
-		mazeGrid.setSelected(true);
+//		mazeGrid.setSelected(true);
 		mazeGrid.setPadding(checkPadding);
 		mazeBox.getChildren().add(mazeGrid);
 
@@ -146,7 +152,25 @@ public class ControlsPanel extends VBox {
 			}
 		});
 
+		arrows.setText("Six Boxes");
+		arrows.setSelected(true);
+		arrows.setPadding(checkPadding);
+		getChildren().add(arrows);
+
+		arrows.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				displayPanel.ShowArrows(arrows.isSelected());
+			}
+		});
+
+		/// rotation controls
 		HBox rotationBox = new HBox();
+		BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(2), new BorderWidths(1));
+		Border b = new Border(bs);
+		rotationBox.setBorder(b);
+		rotationBox.setPadding(new Insets(5, 0, 5, 0));
+
 		getChildren().add(rotationBox);
 		rotationBox.setPadding(new Insets(10, 10, 10, 10));
 
