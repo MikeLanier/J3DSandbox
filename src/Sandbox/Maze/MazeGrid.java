@@ -26,11 +26,17 @@ public class MazeGrid extends Xform {
 			}
 		}
 
-		createMaze(false);
+//		createMaze(false);
 	}
 
 	private MazeGridCell createCell(int x, int y, int z)
 	{
+		if( x<0 && z<0 ) color = MazeGridWall.blueWall;
+		if( x>0 && z<0 ) color = MazeGridWall.greenWall;
+		if( x<0 && z>0 ) color = MazeGridWall.redWall;
+		if( x>0 && z>0 ) color = MazeGridWall.yellowWall;
+		if( x==0 && z==0 ) color = MazeGridWall.whiteWall;
+
 		MazeGridWall west = MazeGlobal.walls.get(MazeGlobal.ID(x, y, z, false));
 		if(west == null)
 		{

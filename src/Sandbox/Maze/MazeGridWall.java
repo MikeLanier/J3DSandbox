@@ -12,6 +12,12 @@ public class MazeGridWall extends Xform {
 	private boolean horizonal = false;
 	private Box box = null;
 
+	public static int whiteWall = 0;
+	public static int blueWall = 1;
+	public static int greenWall = 2;
+	public static int redWall = 3;
+	public static int yellowWall = 4;
+
 	public MazeGridWall(int _xOrigin, int _yOrigin, int _zOrigin, boolean _horizonal, int color)
 	{
 		xOrigin = _xOrigin;

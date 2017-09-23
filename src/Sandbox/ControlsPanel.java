@@ -25,9 +25,11 @@ public class ControlsPanel extends VBox {
 	{
 		displayPanel = _displayPanel;
 
+		Insets checkPadding = new Insets(5,5,5,5);
 		this.setPadding(new Insets(10, 10, 10, 10));
 
 		molecule.setText("Sandbox.Molecule");
+		molecule.setPadding(checkPadding);
 		getChildren().add(molecule);
 		
 		molecule.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -39,6 +41,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		triad.setText("Sandbox.Triad");
+		triad.setPadding(checkPadding);
 		getChildren().add(triad);
 
 		triad.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -50,6 +53,7 @@ public class ControlsPanel extends VBox {
 		});
 		
 		sixFaces.setText("Sandbox.SixFaces");
+		sixFaces.setPadding(checkPadding);
 //		sixFaces.setSelected(true);
 		getChildren().add(sixFaces);
 
@@ -62,6 +66,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		triMesh.setText("Sandbox.TriMesh");
+		triMesh.setPadding(checkPadding);
 //		triMesh.setSelected(true);
 		getChildren().add(triMesh);
 
@@ -74,6 +79,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		teapot.setText("Sandbox.Teapot");
+		teapot.setPadding(checkPadding);
 //		teapot.setSelected(true);
 		getChildren().add(teapot);
 
@@ -86,6 +92,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		threeFaces.setText("Sandbox.ThreeFaces");
+		threeFaces.setPadding(checkPadding);
 //		threeFaces.setSelected(true);
 		getChildren().add(threeFaces);
 
@@ -98,6 +105,7 @@ public class ControlsPanel extends VBox {
 		});
 
 		helix.setText("Sandbox.Helix");
+		helix.setPadding(checkPadding);
 //		helix.setSelected(true);
 		getChildren().add(helix);
 
@@ -109,15 +117,32 @@ public class ControlsPanel extends VBox {
 			}
 		});
 
-		mazeGrid.setText("Sandbox.Maze.MazeGrid");
+		HBox mazeBox = new HBox();
+		molecule.setPadding(checkPadding);
+		getChildren().add(mazeBox);
+//		mazeBox.setPadding(new Insets(10, 10, 10, 10));
+
+		mazeGrid.setText("Maze");
 		mazeGrid.setSelected(true);
-		getChildren().add(mazeGrid);
+		mazeGrid.setPadding(checkPadding);
+		mazeBox.getChildren().add(mazeGrid);
 
 		mazeGrid.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 //				System.out.println("Sandbox.Maze.MazeGrid: mouse clicked: " + mazeGrid.isSelected());
 				displayPanel.ShowMazeGrid(mazeGrid.isSelected());
+			}
+		});
+
+		Button mazeStep = new Button();
+		mazeStep.setText("Create Maze");
+		mazeBox.getChildren().add(mazeStep);
+
+		mazeStep.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				displayPanel.mazeGridGroup.createMaze(true);
 			}
 		});
 
@@ -203,15 +228,5 @@ public class ControlsPanel extends VBox {
 			}
 		});
 
-		Button mazeStep = new Button();
-		mazeStep.setText("Maze Step");
-		getChildren().add(mazeStep);
-
-		mazeStep.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				displayPanel.mazeGridGroup.createMazeStep();
-			}
-		});
 	}
 }

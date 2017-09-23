@@ -288,6 +288,15 @@ public class DisplayPanel extends HBox {
 				cameraXform.rx.setAngle(90);
 				cameraXform.rz.setAngle(0);
 				break;
+			case B:
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(0);
+				cameraXform.rx.setAngle(90);
+				cameraXform.rz.setAngle(180);
+				break;
 //			case X:
 //				triadGroup.setVisible(!triadGroup.isVisible());
 //				break;
