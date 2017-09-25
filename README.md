@@ -5,8 +5,8 @@ A Java App to learn, practice and test OpenGL and (if possible) DirectX programm
 * `3D Text` (09/23/2017)
 * create controls for defining options (09/14/2017)
   * controls for defining multiple lights (09/14/2017)
-  * controls for selecting a face to view, Top, Front, etc...  (09/14/2017)
-    * `sample with accuratly shows top, front, right, etc.` (09/23/2017)
+  * ~~controls for selecting a face to view, Top, Front, etc...  (09/14/2017)~~
+  * `sample with accuratly shows top, front, right, etc.` (09/23/2017)
   * controls for pan, zoom and fit   (09/14/2017)
     * `zoom using mouse wheel`. Have yet to determine how to catch the
      mouse wheel event.  Using -/+ for now. (09/15/2017)

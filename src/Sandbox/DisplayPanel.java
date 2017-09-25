@@ -86,7 +86,7 @@ public class DisplayPanel extends HBox {
 		cameraXform.getChildren().add(cameraXform2);
 		cameraXform2.getChildren().add(cameraXform3);
 		cameraXform3.getChildren().add(camera);
-		cameraXform3.setRotateZ(180.0);
+//		cameraXform3.setRotateZ(180.0);
 
 		camera.setNearClip(CAMERA_NEAR_CLIP);
 		camera.setFarClip(CAMERA_FAR_CLIP);
@@ -303,7 +303,7 @@ public class DisplayPanel extends HBox {
 				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
 				cameraXform.ry.setAngle(0);
 				cameraXform.rx.setAngle(90);
-				cameraXform.rz.setAngle(0);
+				cameraXform.rz.setAngle(180);
 				break;
 			case "B":
 			case "b":
@@ -313,7 +313,47 @@ public class DisplayPanel extends HBox {
 				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
 				cameraXform.ry.setAngle(0);
 				cameraXform.rx.setAngle(90);
-				cameraXform.rz.setAngle(180);
+				cameraXform.rz.setAngle(0);
+				break;
+			case "F":
+			case "f":
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(0);
+				cameraXform.rx.setAngle(0);
+				cameraXform.rz.setAngle(0);
+				break;
+			case "K":
+			case "k":
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(180);
+				cameraXform.rx.setAngle(0);
+				cameraXform.rz.setAngle(0);
+				break;
+			case "L":
+			case "l":
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(270);
+				cameraXform.rx.setAngle(0);
+				cameraXform.rz.setAngle(0);
+				break;
+			case "R":
+			case "r":
+				System.out.println("T is pressed");
+				cameraXform2.t.setX(0.0);
+				cameraXform2.t.setY(0.0);
+				camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
+				cameraXform.ry.setAngle(90);
+				cameraXform.rx.setAngle(0);
+				cameraXform.rz.setAngle(0);
 				break;
 			case "-": 	// zoom out
 				double d = camera.getTranslateZ();

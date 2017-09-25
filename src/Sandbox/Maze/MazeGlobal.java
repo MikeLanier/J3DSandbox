@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class MazeGlobal {
-	public static int	mazeSizeX = 10;
-	public static int	mazeSizeY = 10;
+	public static int	mazeSizeX = 18;
+	public static int	mazeSizeY = 18;
 
 	public static Map<Integer, MazeGridCell> cells = new HashMap<Integer, MazeGridCell>();
 	public static Map<Integer, MazeGridWall> walls = new HashMap<Integer, MazeGridWall>();
